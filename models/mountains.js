@@ -1,6 +1,6 @@
 const db = require('./conn');
 
-class  mountain {
+class MountainModel {
   constructor(id, name, distance, location) {
     this.id = id;
     this.name = name;
@@ -8,10 +8,10 @@ class  mountain {
     this.location = location;
   }
 
-  static async getAll() {
+  static async getAllMountains() {
     try {
       
-      const response = await db.any(`select * from mountain;`);
+      const response = await db.any(`SELECT * FROM mountain;`);
       return response;
     } catch (err) {
       return err.message;
@@ -20,7 +20,7 @@ class  mountain {
 
   static async getById(m_id) {
     try {
-      const response = await db.one(`select * from mountain where id = ${m_id}`);
+      const response = await db.one(`SELECT * FROM mountain WHERE id = ${m_id}`);
       return response;
     } catch (err) {
       return err.message;
@@ -31,7 +31,7 @@ class  mountain {
     console.log("accessed");
     try {
       const response = await db.any(
-        `select * from route where mountain_id = ${m_id}`
+        `SELECT * FROM route WHERE mountain_id = ${m_id}`
     
       );
       return response;
@@ -41,4 +41,4 @@ class  mountain {
   }
 }
 
-module.exports = mountain;
+module.exports = MountainModel;

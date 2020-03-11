@@ -1,7 +1,7 @@
 const db = require('./conn');
 bcrypt = require('bcryptjs');
 
-class Climber {
+class ClimberModel {
     constructor(id, name, email, password) {
         this.id = id;
         this.name = name;
@@ -13,8 +13,8 @@ class Climber {
         return bcrypt.compareSync(this.password, hashedPassword);
     } 
 
-    async addUser() {
-        console.log('adding user', this.name);
+    async addClimber() {
+        console.log('adding climbers', this.name);
         try {
             const response = await db.one(
                 `INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING id`,
@@ -27,8 +27,8 @@ class Climber {
     }
 }
 
-    async loginUser() {
-        console.log('logging in user');
+    async loginClimber() {
+        console.log('logging in climber');
         try {
             const response = await db.one(
                 `SELECT id, name, password FROM user WHERE email = $1;`, 
@@ -38,10 +38,12 @@ class Climber {
             const isValid = this.checkPassword(response.password);
 
             if (!!isValid) {
+
                 const { id, name } = response;
-                return { isValid, id, name };
+                return { isValid, climber_id: id, name };
+
             } else {
-                return {isValid};
+                return { isValid };
             }
         } catch(error) {
             console.error("ERROR: ", error);
@@ -50,4 +52,4 @@ class Climber {
     }
 }
 
-module.exports = Climber;
+module.exports = ClimberModel;
