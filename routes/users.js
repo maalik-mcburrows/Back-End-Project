@@ -1,6 +1,6 @@
 const express = require('express');
 bcrypt = require('bcryptjs');
-const ClimberModel = require('../models/climbers'); 
+const ClimberModel = require('../models/climber'); 
 const router = express.Router();
 
 

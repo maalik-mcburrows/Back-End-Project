@@ -7,7 +7,7 @@ const express = require('express'),
     FileStore = require('session-file-store')(session);
 
 const indexRouter = require('./routes/index'),
-    climbersRouter = require('./routes/climbers'),
+    climbersRouter = require('./routes/users'),
     mountainsRouter = require('./routes/mountains');
 
 const app = express();
@@ -17,6 +17,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+    // store: new FileStore(),
+    secret: 'get rad',
+    resave: false,
+    saveUninitialized: true,
+    // is_logged_in: false
+}));
 
 app.engine('html', es6Renderer);
 app.set('views', './views');
