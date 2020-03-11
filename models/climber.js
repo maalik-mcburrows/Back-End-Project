@@ -52,6 +52,6 @@ class ClimberModel {
         }
     }
   }
-}
+
 
 module.exports = ClimberModel;
