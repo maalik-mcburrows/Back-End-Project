@@ -11,7 +11,7 @@ router.get('/', async (req, res, next) => {
     locals: {
       title: 'This is the Home Page',
       data: data,
-      is_logged_in: request.session.is_logged_in
+      // is_logged_in: request.session.is_logged_in
       
     },
     partials: {
