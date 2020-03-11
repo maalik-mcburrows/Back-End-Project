@@ -29,7 +29,17 @@ class MountainModel {
     }
   }
 
-  static async getRoutesById(m_id) {
+  static async getMountainName(m_id) {
+    try {
+      const response = await db.one(`SELECT name FROM mountain WHERE id = $1`, m_id);
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.log('ERROR: ', error);
+    }
+  }
+
+  static async getRoutesById(r_id) {
     console.log("accessed");
     try {
       const response = await db.any(
