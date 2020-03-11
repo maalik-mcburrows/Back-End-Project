@@ -11,7 +11,16 @@ class MountainModel {
   static async getAllMountains() {
     try {
       
-      const response = await db.any(`SELECT name FROM mountain;`);
+      const response = await db.any(`SELECT * FROM mountain;`);
+      return response;
+    } catch (err) {
+      return err.message;
+    }
+  }
+
+  static async getById(m_id) {
+    try {
+      const response = await db.one(`SELECT * FROM mountain WHERE id = ${m_id}`);
       return response;
     } catch (err) {
       return err.message;
@@ -25,15 +34,6 @@ class MountainModel {
       return response;
     } catch (error) {
       console.log('ERROR: ', error);
-    }
-  }
-
-  static async getById(m_id) {
-    try {
-      const response = await db.one(`SELECT * FROM mountain WHERE id = ${m_id}`);
-      return response;
-    } catch (err) {
-      return err.message;
     }
   }
 
