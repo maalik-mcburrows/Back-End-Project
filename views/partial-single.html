@@ -1,4 +1,5 @@
 
+
 <div class="container">
 
     ${mountainData.map(entry => `
@@ -9,10 +10,62 @@
    
               <p class="card-text"><h3>Distance: ${entry.distance}</h3>
                 <h3>Location: ${entry.location}</h3></p>
-             
+             ${getReviewDetails.map(entry => {
+            return `<br><h3>Reviewer Name: ${entry.reviewer_name}</h3><h3>Review Title: ${entry.review_title}</h3><h3>Review: ${entry.review_text}</h3>
+            `
+            }).join(' ')}
+
+            <form action="/" method="POST">
+              ${
+                      !!is_logged_in ?
+                      `
+                      <label>Name:
+                          <input type="text" name="reviewer_name" placeholder="Please enter your name:">
+                      </label>
+                      <br>
+                      <br>
+                      <label>Title:
+                          <input type="text" name="review_title" placeholder="Please enter a review title:">
+                      </label>
+                      <br>
+                      <br>
+                      <label>Review:
+                          <textarea name="review_text" placeholder="Enter your review of the mountain:"></textarea>
+                      </label>
+                      <br>
+                      <br>
+                      <label>Your ID:
+                          <input type="number" name="climber_id" placeholder="Please enter your ID">
+                      </label>
+                      <br>
+                      <br>
+                      <label>Mountain ID:
+                          <input type="number" name="mountain_id" placeholder="Please enter the mountain id">
+                      </label>
+                      <br>
+                      <br>
+                      <button type="submit">Save Review</button>
+                      `
+                      : 
+                      `<p>You must be logged in to leave a review!</p>`
+                  }
+
+
+
+
+              </form>
               
             </div>
           </div>`)}
   
 
 </div>
+
+
+
+
+
+
+
+<a href="/">Return Home</a>
+
