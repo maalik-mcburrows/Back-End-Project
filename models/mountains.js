@@ -38,7 +38,17 @@ class MountainModel {
     }
   }
 
-  static async getRoutesById(r_id) {
+  static async getReviewDetails(m_id) {
+    try {
+      const response = await db.any(`SELECT * FROM review WHERE mountain_id = $1`, m_id);
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.log('ERROR: ', error);
+    }
+  }
+
+  static async getRoutesById(m_id) {
     console.log("accessed");
     try {
       const response = await db.any(
@@ -50,6 +60,23 @@ class MountainModel {
       return err.message;
     }
   }
-}
+
+  static async addReviews(review_title, review_text, reviewer_name, mountain_id, climber_id) {
+    try {
+        const response = await db.one(
+            `INSERT INTO review (review_title, review_text, reviewer_name, mountain_id, climber_id)
+        VALUES ($1, $2, $3, $4, $5) RETURNING id`,
+            [review_title, review_text, reviewer_name, mountain_id, climber_id]
+        );
+        console.log(response);
+        return response;
+    } catch (error) {
+        console.error('ERROR', error);
+        return error;
+    }
+  }
+};
+
+  
 
 module.exports = MountainModel;

@@ -28,6 +28,15 @@ CREATE TABLE climber (
     
 );
 
+CREATE TABLE review (
+    id serial PRIMARY KEY,
+    review_title text,
+    review_text varchar,
+    reviewer_name text 
+    mountain_id int REFERENCES mountain(id),
+    climber_id int REFERENCES climber(id)
+);
+
 INSERT INTO route (climber_id, mountain_id, name, pitches)
     VALUES (1, 1, 'The Crag Route', 32), (2, 2, 'Obra Dinn', 20), (3, 3, 'Hollow Knight', 27)
 
