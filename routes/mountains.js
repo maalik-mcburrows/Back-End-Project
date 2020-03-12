@@ -20,14 +20,6 @@ router.get('/', async (req, res, next) => {
   });
 
 router.get('/:id?', async (req, res) => {
-<<<<<<< HEAD
-    const {id} = req.params;
-
-    const mountainName = await mountainModel.getMountainName(id);
-    const mountainData = await mountainModel.getMountainById(id);
-
-    res.render('template', {
-=======
     const {
         id
     } = req.params;
@@ -35,7 +27,6 @@ router.get('/:id?', async (req, res) => {
     const mountainData = await mountainModel.getById(id);
     const getReviewDetails = await mountainModel.getReviewDetails(id);
     res.render('template', { 
->>>>>>> 7566fdf36b9f507746ee87a36a3ed4649d9bc16d
         locals: {
             title: mountainName.name,
             mountainData: mountainData,
