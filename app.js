@@ -8,7 +8,8 @@ const express = require('express'),
 
 const indexRouter = require('./routes/index'),
     climbersRouter = require('./routes/users'),
-    mountainsRouter = require('./routes/mountains');
+    mountainsRouter = require('./routes/mountains'),
+    waypointRouter = require('./routes/waypoint');
 
 const app = express();
 
@@ -32,5 +33,6 @@ app.set('view engine', 'html');
 app.use('/', indexRouter);
 app.use('/users', climbersRouter);
 app.use('/mountains', mountainsRouter);
+app.use('/waypoint', waypointRouter);
 
 module.exports = app;
