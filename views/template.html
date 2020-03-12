@@ -6,7 +6,24 @@
 </head>
 
 <body>
-  
+    <nav>
+        ${
+            (!!is_logged_in) ? 
+            `<a class="nav-element" href="/users/logout">Logout</a>`
+            :
+            `
+            <a class="nav-element" href="/users/signup">Sign Up</a>
+            <a class="nav-element" href="/users/login">Login</a>
+            `
+        }
+    </nav>
+    ${
+        !!first_name ? 
+        `<h2>Hey, ${first_name}</h2>
+        <br>`
+        :
+        `<h2>Hello</h2>`
+    }    
   <h1>${title}</h1>
   ${partial}
 </body>

@@ -10,8 +10,8 @@ router.get('/', async (req, res, next) => {
       locals: {
         title: 'This is the Home Page',
         data: data,
-        // is_logged_in: request.session.is_logged_in
-        
+        is_logged_in: req.session.is_logged_in,
+        first_name: req.session.first_name
       },
       partials: {
         partial: 'partial-mtn-list'
@@ -29,10 +29,10 @@ router.get('/:id?', async (req, res) => {
         locals: {
             title: mountainName.name,
             mountainData: mountainData,
-            // is_logged_in: req.session.is_logged_in,
-            // user_id: req.session.is_logged_in,
-            // user_id: req.session.user_id,
-            // first_name: req.session.first_name
+            is_logged_in: req.session.is_logged_in,
+            user_id: req.session.is_logged_in,
+            user_id: req.session.user_id,
+            first_name: req.session.first_name
         },
         partials: {
             partial: 'partial-single'

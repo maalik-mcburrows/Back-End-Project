@@ -22,7 +22,7 @@ app.use(session({
     secret: 'get rad',
     resave: false,
     saveUninitialized: true,
-    // is_logged_in: false
+    is_logged_in: false
 }));
 
 app.engine('html', es6Renderer);
@@ -30,7 +30,7 @@ app.set('views', './views');
 app.set('view engine', 'html');
 
 app.use('/', indexRouter);
-app.use('/climbers', climbersRouter);
+app.use('/users', climbersRouter);
 app.use('/mountains', mountainsRouter);
 
 module.exports = app;

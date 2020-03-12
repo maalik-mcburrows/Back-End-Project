@@ -1,15 +1,18 @@
-<h2>Registration</h2>
-<form action ='/' method='POST'>
-    <label>Name
-       <input type='text' name='name_id' placeholder="Enter Name"/>
+<form action ='/users/signup' method='POST'>
+    <label>First Name
+       <input type='text' name='first_name' placeholder="Enter Name"/>
     </label>
      <br>
+     <label>Last Name
+        <input type='text' name='last_name' placeholder="Enter Name"/>
+     </label>
+      <br>
      <label>Email
-        <input type='text' name='email_id' placeholder="Enter your Email"/>
+        <input type='text' name='email' placeholder="Enter your Email"/>
      </label>
     <br>
     <label>Password
-        <input type='password' name='pass_id' placeholder="Enter Password"/>
+        <input type='password' name='password' placeholder="Enter Password"/>
     </label>
     <button type='submit'>Sign up!</button>
 </form>
