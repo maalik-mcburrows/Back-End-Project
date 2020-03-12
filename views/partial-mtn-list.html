@@ -1,5 +1,16 @@
 <ul>
     ${data.map(entry => `
-    <li><a href="/mountains/${entry.id}">${entry.name}</a></li>
+
+        <div class="card" style="width: 30rem;">
+            <a href = "/mountains/${entry.id}"><img class="card-img-top" src="${entry.image}" alt="${entry.name}"></a>
+            <div class="card-body">
+              <h5 class="card-title">${entry.name}</h5>
+             
+              <a href="/mountains/${entry.id}" class="btn btn-primary">View Details</a>
+            </div>
+          </div>
+    
     `).join(' ')}
 </ul>
+
+
