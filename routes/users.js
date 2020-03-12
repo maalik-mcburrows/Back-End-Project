@@ -9,11 +9,11 @@ const router = express.Router();
 router.get('/signup', function(req, res, next) {
   
 
-  response.render('template', { 
+  res.render('template', { 
     locals: {
       title: 'Sign Up',
-      is_logged_in: false
-      
+      is_logged_in: req.session.is_logged_in,
+      first_name: req.session.first_name
     },
     partials: {
       partial: 'partial-signup'
@@ -24,11 +24,11 @@ router.get('/signup', function(req, res, next) {
 router.get('/login', function(req, res, next) {
   
 
-  response.render('template', { 
+  res.render('template', { 
     locals: {
       title: 'Login',
-      is_logged_in: false
-      
+      is_logged_in: req.session.is_logged_in,
+      first_name: req.session.first_name
     },
     partials: {
       partial: 'partial-login'
@@ -46,7 +46,8 @@ router.post('/login', async function(req, res, next) {
   if (!!loginResponse.isValid) {
     req.session.is_logged_in = loginResponse.isValid;
     req.session.climber_id = loginResponse.climber_id;
-    req.session.name = loginResponse.name;
+    req.session.first_name = loginResponse.first_name;
+    req.session.last_name = loginResponse.last_name;
     res.redirect('/');
 
   } else {
@@ -55,14 +56,14 @@ router.post('/login', async function(req, res, next) {
 });
 
 router.post('/signup', function(req, res, next){
-  const { name, password, email } = req.body;
+  const { first_name, last_name, password, email } = req.body;
   
   const salt = bcrypt.genSaltSync(10);
   const hash = bcrypt.hashSync(password, salt);
 
-  const climber = new ClimberModel (null, name, email, hash);
+  const climber = new ClimberModel (null, first_name, last_name, email, hash);
   climber.addClimber();
-  res.redirect('/');
+  res.redirect("/");
   
 });
 
