@@ -1,5 +1,6 @@
 const db = require('./conn');
-bcrypt = require('bcryptjs');
+bcrypt = require('bcryptjs')
+
 
 class ClimberModel {
     constructor(id, first_name, last_name, email, password) {
@@ -10,9 +11,9 @@ class ClimberModel {
         this.password = password;
     }
 
-    checkPassword(hashedPassword) {
-        return bcrypt.compareSync(this.password, hashedPassword);
-    } 
+  checkPassword(hashedPassword) {
+    return bcrypt.compareSync(this.password, hashedPassword);
+  }
 
     async addClimber() {
         console.log('adding climbers', this);
@@ -53,6 +54,7 @@ class ClimberModel {
             return error;
         }
     }
-}
+  }
+
 
 module.exports = ClimberModel;
