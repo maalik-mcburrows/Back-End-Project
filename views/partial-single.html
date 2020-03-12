@@ -1,11 +1,18 @@
 
 <div class="container">
-    ${mountainData.map(entry => {
-        return `<h3>Distance: ${entry.distance}</h3>
-        <h3>Location: ${entry.location}</h3>
-        
-        <img src="${entry.image}" class="img-fluid"/>
-        `
-        })}
+
+    ${mountainData.map(entry => `
+
+        <div class="card" style="width: 30rem;">
+            <a href = "/mountains/${entry.id}"><img class="card-img-top" src="${entry.image}" alt="${entry.name}"></a>
+            <div class="card-body">
+   
+              <p class="card-text"><h3>Distance: ${entry.distance}</h3>
+                <h3>Location: ${entry.location}</h3></p>
+             
+              
+            </div>
+          </div>`)}
+  
 
 </div>
