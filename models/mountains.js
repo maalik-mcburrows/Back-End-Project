@@ -21,7 +21,8 @@ class MountainModel {
 
   static async getMountainById(m_id) {
     try {
-      const response = await db.one(`SELECT * FROM mountain WHERE id = ${m_id}`);
+      const response = await db.any(`SELECT * FROM mountain WHERE id = $1`, m_id);
+      console.log(response);
       return response;
 
     } catch (err) {
