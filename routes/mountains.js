@@ -20,15 +20,26 @@ router.get('/', async (req, res, next) => {
   });
 
 router.get('/:id?', async (req, res) => {
+<<<<<<< HEAD
     const {id} = req.params;
 
     const mountainName = await mountainModel.getMountainName(id);
     const mountainData = await mountainModel.getMountainById(id);
 
     res.render('template', {
+=======
+    const {
+        id
+    } = req.params;
+    const mountainName = await mountainModel.getMountainName(id);
+    const mountainData = await mountainModel.getById(id);
+    const getReviewDetails = await mountainModel.getReviewDetails(id);
+    res.render('template', { 
+>>>>>>> 7566fdf36b9f507746ee87a36a3ed4649d9bc16d
         locals: {
             title: mountainName.name,
             mountainData: mountainData,
+            getReviewDetails: getReviewDetails,
             is_logged_in: req.session.is_logged_in,
             user_id: req.session.is_logged_in,
             user_id: req.session.user_id,
@@ -39,5 +50,27 @@ router.get('/:id?', async (req, res) => {
         }
     })
 });
+
+router.post('/', async function (req, res) {
+  console.log(req.body);
+  const {
+      review_title,
+      review_text,
+      reviewer_name,
+      mountain_id,
+      climber_id
+  } = req.body
+
+  const postData = await mountainModel.addReviews(review_title,
+      review_text,
+      reviewer_name,
+      mountain_id,
+      climber_id
+      );
+  console.log(postData);
+
+  res.status(200).redirect('/');
+});
+
 
 module.exports = router;
