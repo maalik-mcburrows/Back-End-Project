@@ -10,13 +10,8 @@ router.get('/', async (req, res, next) => {
   res.render('template', { 
     locals: {
       title: 'This is the Home Page',
-      data: data,
-<<<<<<< HEAD
-      is_logged_in: req.session.is_logged_in
-=======
-      // is_logged_in: request.session.is_logged_in
->>>>>>> 2b03f15f56e7658a3830555e6aa57342d18b78ef
-      
+      data: data
+      // is_logged_in: req.session.is_logged_in 
     },
     partials: {
       partial: 'partial-index'
