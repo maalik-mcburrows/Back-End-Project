@@ -42,6 +42,25 @@ router.get('/:id?', async (req, res) => {
     })
 });
 
+router.get('/:id/custom-route', async function(req, res, next) {
+  const {
+    id
+} = req.params;
+const mountainData = await mountainModel.getById(id);
+const mountainName = await mountainModel.getMountainName(id);
+  res.render('template', { 
+    locals: {
+      title: mountainName.name,
+      mountainData: mountainData,
+      is_logged_in: req.session.is_logged_in,
+      first_name: req.session.first_name
+    },
+    partials: {
+      partial: 'partial-ctm-path'
+    }
+  });
+});
+
 router.post('/', async function (req, res) {
   console.log(req.body);
   const {
