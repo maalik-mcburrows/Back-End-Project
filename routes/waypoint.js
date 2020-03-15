@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 // const waypointModel = require('../models/waypoint');
+var multer = require('multer');
+var upload = multer({dest:'test'});
+var ba64 = require("ba64")
 
 
 router.get('/', async (req, res, next) => {
@@ -19,6 +22,16 @@ router.get('/', async (req, res, next) => {
       }
     });
   });
+
+
+  router.post('/upload', function(req, res, next){
+    const { myinput } = req.body;
+    const {name} = req.body;
+    console.log("encoded",myinput);
+    const data_url = myinput
+    ba64.writeImageSync(`public/images/${name}`, data_url);
+
+  })
 
 
 // router.post('/', async function (req, res) {

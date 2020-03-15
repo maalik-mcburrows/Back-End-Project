@@ -5,6 +5,7 @@ const express = require('express'),
     es6Renderer = require('express-es6-template-engine'),
     session = require('express-session'),
     FileStore = require('session-file-store')(session);
+    bodyParser = require('body-parser')
 
 const indexRouter = require('./routes/index'),
     climbersRouter = require('./routes/users'),
@@ -14,8 +15,11 @@ const indexRouter = require('./routes/index'),
 const app = express();
 
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+    limit: "50mb",
+    extended: false
+  }));
+  app.use(bodyParser.json({limit: "50mb"}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({

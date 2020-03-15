@@ -1,6 +1,8 @@
-const imageInput = document.getElementById('image-input');
+const imageInput = document.getElementById('image-input')
+const submit2 = document.getElementById('submit2');
 const backgroundCanvas = document.getElementById('canvas');
 const backgroundCtx = backgroundCanvas.getContext('2d');
+const form = document.getElementById('form');
 
 const img = new Image();
 img.src = '/images/mountain_test_resize.jpeg';
@@ -33,15 +35,19 @@ img.onload = () => {
             
 
         }
-
+        
+        
+        
 
 
 
     });
 };
 
-imageInput.addEventListener('click', function (e) {
-    genImg = new Image();
-    genImg.src = backgroundCanvas.toDataURL();
-    imageInput.value = genImg;
-});
+submit2.addEventListener('click', function (e) {
+    console.log("submitted")
+const dataURL = backgroundCanvas.toDataURL();
+imageInput.value = dataURL;
+
+})
+
