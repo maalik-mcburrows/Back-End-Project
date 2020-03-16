@@ -5,28 +5,28 @@ const backgroundCtx = backgroundCanvas.getContext('2d');
 const form = document.getElementById('form');
 
 const img = new Image();
-img.src = '/images/mountain_test_resize.jpeg';
- backgroundCtx.canvas.width  = img.width;
- backgroundCtx.canvas.height = img.height;  
+
 let x;
 let y;
 let start = false;
 let done = false;
 img.onload = () => {
-
+    console.log("loaded")
+    backgroundCtx.canvas.width  = img.width;
+    backgroundCtx.canvas.height = img.height;   
     backgroundCtx.drawImage(img, 0, 0);
 
     backgroundCanvas.addEventListener('click', function (e) {
         if (start === false) {
-            x = event.clientX;
-            y = event.clientY;
+            x = event.offsetX;
+            y = event.offsetY;
             backgroundCtx.beginPath();
             backgroundCtx.moveTo(x, y);
             
             start = true;
         } else {
-            x = event.clientX;
-            y = event.clientY;
+            x = event.offsetX;
+            y = event.offsetY;
             backgroundCtx.lineTo(x, y);
             
             backgroundCtx.strokeStyle = 'rgb(0,128,0)';
@@ -44,6 +44,12 @@ img.onload = () => {
     });
 };
 
+
+  
+img.src = '/images/mountain_test_resize.jpeg';
+
+
+ 
 submit2.addEventListener('click', function (e) {
     console.log("submitted")
 const dataURL = backgroundCanvas.toDataURL();

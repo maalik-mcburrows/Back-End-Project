@@ -9,7 +9,7 @@ var ba64 = require("ba64")
 router.get('/', async (req, res, next) => {
     
   
-    res.render('waypoint-template', { 
+    res.render('template', { 
       locals: {
         title: 'Create a Route',
         is_logged_in: req.session.is_logged_in,

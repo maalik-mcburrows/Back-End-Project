@@ -1,7 +1,13 @@
-<!-- <canvas id="canvas" width="400px" height="200px">
-</canvas>
 
-<form action="/upload" method="post" enctype="multipart/form-data">
-    <input id="image-input" type="hidden" name="myinput" value="0" />
-    <input type="submit" value="upload">
-</form> -->
+    <canvas id="canvas" width="400px" height="200px">
+    </canvas>
+
+  
+    <button type='submit' id="submit2">save image</button>
+    <form id="form" action="/waypoint/upload" method="post" >
+        <input type="hidden" id="image-input"  name="myinput" value="0" />
+        <input type="text"   name="name" value="name" />
+        <input id="submit" type="submit" value="upload">
+</form>
+
+<script src="script.js"></script> 
