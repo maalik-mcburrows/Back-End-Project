@@ -1,18 +1,20 @@
 <form action ='/users/signup' method='POST'>
-    <label>First Name
-       <input type='text' name='first_name' placeholder="Enter Name"/>
-    </label>
-     <br>
-     <label>Last Name
-        <input type='text' name='last_name' placeholder="Enter Name"/>
-     </label>
+   <div class='formLabelsSignUp'>
+      <label>First Name
+         <input class='firstNameInput' type='text' name='first_name' placeholder="Enter Name"/>
+      </label>
+      <br>
+      <label>Last Name
+         <input class='lastNameInput' type='text' name='last_name' placeholder="Enter Name"/>
+      </label>
       <br>
      <label>Email
-        <input type='text' name='email' placeholder="Enter your Email"/>
+        <input class='emailInput' type='text' name='email' placeholder="Enter your Email"/>
      </label>
-    <br>
-    <label>Password
-        <input type='password' name='password' placeholder="Enter Password"/>
-    </label>
-    <button type='submit'>Sign up!</button>
+      <br>
+      <label>Password
+        <input class='passwordInput' type='password' name='password' placeholder="Enter Password"/>
+      </label>
+   </div>
+    <button class='submitButton' type='submit'>Sign up!</button>
 </form>
