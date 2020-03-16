@@ -1,11 +1,12 @@
 const db = require('./conn');
 
 class MountainModel {
-  constructor(id, name, distance, location) {
+  constructor(id, name, distance, location, image) {
     this.id = id;
     this.name = name;
     this.distance = distance;
     this.location = location;
+    this.image = image;
   }
 
   static async getAllMountains() {
