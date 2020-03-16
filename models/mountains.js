@@ -13,16 +13,18 @@ class MountainModel {
       
       const response = await db.any(`SELECT * FROM mountain;`);
       return response;
+
     } catch (err) {
       return err.message;
     }
   }
 
-  static async getById(m_id) {
+  static async getMountainById(m_id) {
     try {
       const response = await db.any(`SELECT * FROM mountain WHERE id = $1`, m_id);
       console.log(response);
       return response;
+
     } catch (err) {
       return err.message;
     }
@@ -53,6 +55,19 @@ class MountainModel {
     try {
       const response = await db.any(
         `SELECT * FROM route WHERE mountain_id = ${m_id}`
+      )
+      return response;
+
+    } catch (err) {
+      return err.message;
+    }
+  }
+
+  static async getReviewsById(m_id) {
+    console.log("accessed");
+    try {
+      const response = await db.any(
+        `SELECT * FROM review WHERE mountain_id = ${m_id}`
     
       );
       return response;
@@ -78,5 +93,7 @@ class MountainModel {
 };
 
   
+
+
 
 module.exports = MountainModel;

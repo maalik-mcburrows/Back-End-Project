@@ -8,7 +8,7 @@ router.get('/', async (req, res, next) => {
   
     res.render('template', { 
       locals: {
-        title: 'This is the Home Page',
+        title: 'Mountain Archive',
         data: data,
         is_logged_in: req.session.is_logged_in,
         first_name: req.session.first_name
@@ -24,7 +24,7 @@ router.get('/:id?', async (req, res) => {
         id
     } = req.params;
     const mountainName = await mountainModel.getMountainName(id);
-    const mountainData = await mountainModel.getById(id);
+    const mountainData = await mountainModel.getMountainById(id);
     const getReviewDetails = await mountainModel.getReviewDetails(id);
     res.render('template', { 
         locals: {
