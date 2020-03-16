@@ -24,7 +24,7 @@ router.get('/:id?', async (req, res) => {
         id
     } = req.params;
     const mountainName = await mountainModel.getMountainName(id);
-    const mountainData = await mountainModel.getById(id);
+    const mountainData = await mountainModel.getMountainById(id);
     const getReviewDetails = await mountainModel.getReviewDetails(id);
     res.render('template', { 
         locals: {
