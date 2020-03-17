@@ -1,15 +1,21 @@
 const express = require('express');
 const router = express.Router();
 // const waypointModel = require('../models/waypoint');
+const mountainModel = require('../models/mountains');
 
 
-router.get('/', async (req, res, next) => {
-    
-  
+router.get('/:id?', async (req, res, next) => {
+  const {
+    id
+  } = req.params;
+  const mountainPic = await mountainModel.getMountainPic(id);
+  const mountainData = await mountainModel.getById(id);
     res.render('waypoint-template', { 
       locals: {
-        title: 'Create a Route',
+        title: 'Create custom path',
         is_logged_in: req.session.is_logged_in,
+        mountainData: mountainData,
+        mountainPic: mountainPic.image,
         first_name: req.session.first_name
         
         

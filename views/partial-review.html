@@ -1,0 +1,92 @@
+<div class="container">
+
+    ${mountainData.map(entry => `
+
+        <div class="card" style="width: 30rem;">
+            <a href = "/mountains/${entry.id}"><img class="card-img-top" src="${entry.image}" alt="${entry.name}"></a>
+            <div class="card-body">
+   
+              <p class="card-text"><h3>Distance: ${entry.distance}</h3>
+                <h3>Location: ${entry.location}</h3></p>
+             ${getSingleReview.map(entry => {
+            return `<br><p>Reviewer Name: ${entry.reviewer_name}</p><p>Review Title: ${entry.review_title}</p>
+            <p>Review: ${entry.review_text}</p><form method="POST" action="/mountains/karma/id:"><p>Karma: </p><p id="karma">${entry.re_karma}</p><button id="myButton" name="re_karma" onclick="addOne()" type="submit">Upvote</button>
+            <button id="myButton" name="re_karma" onclick="takeOne()" type="submit">Downvote</button></form>
+            `
+            }).join(' ')}
+
+    
+
+            <form action="/" method="POST">
+              ${
+                      !!is_logged_in ?
+                      `
+                      <label>Name:
+                          <input type="text" name="reviewer_name" placeholder="Please enter your name:">
+                      </label>
+                      <br>
+                      <br>
+                      <label>Title:
+                          <input type="text" name="review_title" placeholder="Please enter a review title:">
+                      </label>
+                      <br>
+                      <br>
+                      <label>Review:
+                          <textarea name="review_text" placeholder="Enter your review of the mountain:"></textarea>
+                      </label>
+                      <br>
+                      <br>
+                      <label>Your ID:
+                          <input type="number" name="climber_id" placeholder="Please enter your ID">
+                      </label>
+                      <br>
+                      <br>
+                      <label>Mountain ID:
+                          <input type="number" name="mountain_id" placeholder="Please enter the mountain id">
+                      </label>
+                      <br>
+                      <br>
+                      <button type="submit">Save Review</button>
+                      `
+                      : 
+                      `<p>You must be logged in to leave a review!</p>`
+                  }
+              </form>
+              
+            </div>
+          </div>
+  
+
+</div>
+
+
+
+
+
+
+
+<a href="/" class="btn btn-primary">Return Home</a>
+<a href="/waypoint/${entry.id}" class="btn btn-primary">Plot your own path!</a>`)}
+
+<script>
+
+    const button = document.getElementById('myButton');
+    button.addEventListener('click', function(e) {
+    console.log('button was clicked');
+    });
+
+    function addOne() {
+        var foo = document.getElementById('karma').innerHTML;
+        foo ++;
+        document.getElementById('karma').innerHTML = foo;
+    };
+// This allows the fxn to only run once
+    // var upVote = _.once(addOne);
+    // upVote();
+
+    function takeOne() {
+        var foo = document.getElementById('karma').innerHTML;
+        foo --;
+        document.getElementById('karma').innerHTML = foo;
+    };
+</script>

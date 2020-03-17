@@ -11,7 +11,6 @@ let y;
 let start = false;
 let done = false;
 img.onload = () => {
-
     backgroundCtx.drawImage(img, 0, 0);
 
     backgroundCanvas.addEventListener('click', function (e) {

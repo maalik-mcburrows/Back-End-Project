@@ -32,7 +32,7 @@ CREATE TABLE review (
     id serial PRIMARY KEY,
     review_title text,
     review_text varchar,
-    reviewer_name text 
+    reviewer_name text, 
     mountain_id int REFERENCES mountain(id),
     climber_id int REFERENCES climber(id)
 );

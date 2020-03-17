@@ -28,9 +28,30 @@ class MountainModel {
     }
   }
 
+  static async getMountainByReview(m_id) {
+    try {
+      const reviewID = await this.getSingleReview(m_id);
+      const response = await db.any(`SELECT * FROM mountain WHERE id = $1`, reviewID[0].mountain_id);
+      console.log(response[0].name);
+      return response;
+    } catch (err) {
+      return err.message;
+    }
+  }
+
   static async getMountainName(m_id) {
     try {
       const response = await db.one(`SELECT name FROM mountain WHERE id = $1`, m_id);
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.log('ERROR: ', error);
+    }
+  }
+
+  static async getMountainPic(m_id) {
+    try {
+      const response = await db.one(`SELECT image FROM mountain WHERE id = $1`, m_id);
       console.log(response);
       return response;
     } catch (error) {
@@ -47,6 +68,29 @@ class MountainModel {
       console.log('ERROR: ', error);
     }
   }
+
+  static async getSingleReview(m_id) {
+    try {
+      const response = await db.any(`SELECT * FROM review WHERE id = $1`, m_id);
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.log('ERROR: ', error);
+    }
+  }
+
+  // static async getKarma(m_id) {
+  //   try {
+  //     const reviewID = await this.getReviewDetails(m_id);
+  //     console.log(reviewID[0].id);
+  //     const response = await db.any(`SELECT re_karma, ro_karma FROM review, route WHERE climber_id = climber.id AND review.id = $1`, [reviewID[0].id]);
+  //     console.log(response);
+  //     return response;
+  //   } catch (error) {
+  //     console.log('ERROR: ', error);
+  //   }
+  // }
+
 
   static async getRoutesById(m_id) {
     console.log("accessed");
@@ -75,7 +119,24 @@ class MountainModel {
         return error;
     }
   }
+
+  static async addReviewKarma(re_karma, m_id) {
+    try {
+        const response = await db.one(
+            `UPDATE review SET re_karma = $1 WHERE id = $2`,
+            [re_karma, m_id]
+        );
+        console.log(response);
+        return response;
+    } catch (error) {
+        console.error('ERROR', error);
+        return error;
+    }
+  }
+
 };
+
+
 
   
 
