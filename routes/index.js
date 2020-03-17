@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-const MountainModel = require('../models/mountains');
+const express = require('express'),
+  router = express.Router(),
+  MountainModel = require('../models/mountains');
 
 
 /* GET home page. */
@@ -9,7 +9,7 @@ router.get('/', async (req, res, next) => {
 
   res.render('template', { 
     locals: {
-      title: 'This is the Home Page',
+      title: 'Solo Dolo',
       data: data,
       is_logged_in: req.session.is_logged_in,
       first_name: req.session.first_name

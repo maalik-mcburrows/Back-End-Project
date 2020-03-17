@@ -11,7 +11,7 @@ router.get('/signup', function(req, res, next) {
 
   res.render('template', { 
     locals: {
-      title: 'Sign Up',
+      title: 'Solo Dolo',
       is_logged_in: req.session.is_logged_in,
       first_name: req.session.first_name
     },
@@ -26,7 +26,7 @@ router.get('/login', function(req, res, next) {
 
   res.render('template', { 
     locals: {
-      title: 'Login',
+      title: 'Solo Dolo',
       is_logged_in: req.session.is_logged_in,
       first_name: req.session.first_name
     },

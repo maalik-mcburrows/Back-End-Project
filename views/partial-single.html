@@ -1,9 +1,12 @@
-
-
 <div class="container">
-
     ${mountainData.map(entry => `
+    <div class="card" style="width: 30rem;">
+        <a href = "/mountains/${entry.id}"><img class="card-img-top" src="${entry.image}" alt="${entry.name}"></a>
+        <div class="card-body">
+            <h3 class="card-text">Distance: ${entry.distance}</h3>
+            <h3>Location: ${entry.location}</h3>
 
+<<<<<<< HEAD
         <div class="card" style="width: 30rem;">
             <a href = "/mountains/${entry.id}"><img class="card-img-top" src="${entry.image}" alt="${entry.name}"></a>
             <div class="card-body">
@@ -20,7 +23,58 @@
               
             </div>
           </div>
+=======
+            ${getReviewDetails.map(entry => (`<br/>
+                <p>Reviewer Name: ${entry.reviewer_name}</p>
+                <p>Review Title: ${entry.review_title}</p>
+                <p>Review: ${entry.review_text}</p>
+            `)).join(' ')}
+
+            <form action="/" method="POST">
+
+              ${
+                      !!is_logged_in ?
+                      `
+                      <label>Name:
+                          <input type="text" name="reviewer_name" placeholder="Please enter your name:">
+                      </label>
+                      <br>
+                      <br>
+                      <label>Title:
+                          <input type="text" name="review_title" placeholder="Please enter a review title:">
+                      </label>
+                      <br>
+                      <br>
+                      <label>Review:
+                          <textarea name="review_text" placeholder="Enter your review of the mountain:"></textarea>
+                      </label>
+                      <br>
+                      <br>
+                      <label>Your ID:
+                          <input type="number" name="climber_id" placeholder="Please enter your ID">
+                      </label>
+                      <br>
+                      <br>
+                      <label>Mountain ID:
+                          <input type="number" name="mountain_id" placeholder="Please enter the mountain id">
+                      </label>
+                      <br>
+                      <br>
+                      <button type="submit">Save Review</button>
+                      `
+                      : 
+                      `<p>You must be logged in to leave a review!</p>`
+                  }
+              </form>
+              
+            </div>
+            <a href="/" class="btn btn-primary">Return Home</a>
+${mountainData.map(entry => `<a href="/mountains/${entry.id}/custom-route" class="btn btn-primary">Plot your own path!</a>` )}
+          </div>`)}
+>>>>>>> f1dc5f4d4b747c66d8698b02c2242d67aba0d1f6
   
+
+          
 
 </div>
 
@@ -30,6 +84,68 @@
 
 
 
+<<<<<<< HEAD
 <a href="/" class="btn btn-primary">Return Home</a>
 <a href="/waypoint/${entry.id}" class="btn btn-primary">Plot your own path!</a>`)}
+=======
+
+
+                ${!!is_logged_in ? `
+                <label>
+                    Name:
+                    <input 
+                    type="text" 
+                    name="reviewer_name" 
+                    placeholder="Please enter your name:"/>
+                </label>
+                <br>
+                <br>
+                <label>
+                    Title:
+                    <input type="text" 
+                    name="review_title" 
+                    placeholder="Please enter a review title:"/>
+                </label>
+                <br>
+                <br>
+                <label>
+                    Review:
+                    <textarea 
+                        name="review_text" 
+                        placeholder="Enter your review of the mountain:">
+                    </textarea>
+                </label>
+                <br>
+                <br>
+                <label>
+                    Your ID:
+                    <input type="number" 
+                    name="climber_id" 
+                    placeholder="Please enter your ID"/>
+                </label>
+                <br>
+                <br>
+                <label>
+                    Mountain ID:
+                    <input type="number" 
+                    name="mountain_id" 
+                    placeholder="Please enter the mountain id"/>
+                </label>
+                <br>
+                <br>
+                <button class="submitReview" type="submit">Save Review</button>
+                ` : `<p class='loggedOutStatementText'>You must be logged in to leave a review!</p>
+                ` }
+            </form>
+            `)}
+            <a href="/" class="btn-btn-primary1">Return Home</a>
+            ${mountainData.map(entry => `
+            <a href="/mountains/${entry.id}/custom-route" class="btn btn-primary2">
+            Plot your own path!
+            </a>
+            `)}
+        </div>
+    </div>
+</div>
+>>>>>>> f1dc5f4d4b747c66d8698b02c2242d67aba0d1f6
 
