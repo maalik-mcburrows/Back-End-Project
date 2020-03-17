@@ -13,6 +13,60 @@
             `)).join(' ')}
 
             <form action="/" method="POST">
+
+              ${
+                      !!is_logged_in ?
+                      `
+                      <label>Name:
+                          <input type="text" name="reviewer_name" placeholder="Please enter your name:">
+                      </label>
+                      <br>
+                      <br>
+                      <label>Title:
+                          <input type="text" name="review_title" placeholder="Please enter a review title:">
+                      </label>
+                      <br>
+                      <br>
+                      <label>Review:
+                          <textarea name="review_text" placeholder="Enter your review of the mountain:"></textarea>
+                      </label>
+                      <br>
+                      <br>
+                      <label>Your ID:
+                          <input type="number" name="climber_id" placeholder="Please enter your ID">
+                      </label>
+                      <br>
+                      <br>
+                      <label>Mountain ID:
+                          <input type="number" name="mountain_id" placeholder="Please enter the mountain id">
+                      </label>
+                      <br>
+                      <br>
+                      <button type="submit">Save Review</button>
+                      `
+                      : 
+                      `<p>You must be logged in to leave a review!</p>`
+                  }
+              </form>
+              
+            </div>
+            <a href="/" class="btn btn-primary">Return Home</a>
+${mountainData.map(entry => `<a href="/mountains/${entry.id}/custom-route" class="btn btn-primary">Plot your own path!</a>` )}
+          </div>`)}
+  
+
+          
+
+</div>
+
+
+
+
+
+
+
+
+
                 ${!!is_logged_in ? `
                 <label>
                     Name:
@@ -70,3 +124,4 @@
         </div>
     </div>
 </div>
+
