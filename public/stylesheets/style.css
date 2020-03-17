@@ -228,6 +228,7 @@ input {
   border-color: black;
   border-width: 3px;
   border-radius: 10px;
+
 }
 
 .card-img-top {
@@ -236,35 +237,14 @@ input {
 
 }
 
-/* .singleCard {
+.submitReview {
 
-
-  display: inline-block;
-  flex-direction: row;
-  flex-wrap: wrap;
   position: relative;
-  top: 110px;
-  left: 330px;
+  bottom: 20px;
   border-color: black;
   border-width: 3px;
   border-radius: 10px;
-
-}
-
-.card-img-top-single {
-
-  max-height: 290px;
-  display: inline-block;
   
-
-}
-
-.card-body-single {
-
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12px;
-  text-align: center;
-
 }
 
 .loggedOutStatementText {
@@ -276,8 +256,7 @@ input {
   position: relative;
   top: 50px;
 
-} */
-
+}
 
 @media only screen and (max-width: 600px) {
 
@@ -290,6 +269,7 @@ input {
 
   }
 }
+
 
 @media only screen and (max-width: 1200px) {
 
