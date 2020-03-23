@@ -1,20 +1,8 @@
 const express = require('express');
 const router = express.Router();
 // const waypointModel = require('../models/waypoint');
-<<<<<<< HEAD
-const mountainModel = require('../models/mountains');
-
-
-router.get('/:id?', async (req, res, next) => {
-  const {
-    id
-  } = req.params;
-  const mountainPic = await mountainModel.getMountainPic(id);
-  const mountainData = await mountainModel.getById(id);
-    res.render('waypoint-template', { 
-=======
-var multer = require('multer');
-var upload = multer({dest:'test'});
+// var multer = require('multer');
+// var upload = multer({dest:'test'});
 var ba64 = require("ba64")
 
 
@@ -22,7 +10,6 @@ router.get('/', async (req, res, next) => {
     
   
     res.render('template', { 
->>>>>>> f1dc5f4d4b747c66d8698b02c2242d67aba0d1f6
       locals: {
         title: 'Create custom path',
         is_logged_in: req.session.is_logged_in,

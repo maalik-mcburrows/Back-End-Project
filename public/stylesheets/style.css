@@ -254,7 +254,7 @@ input {
   font-size: 20px;
   text-align: center;
   font-style: italic;
-  position: relative;
+  /* position: relative; */
   top: 50px;
 
 }

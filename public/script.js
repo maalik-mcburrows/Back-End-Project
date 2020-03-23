@@ -11,12 +11,9 @@ let y;
 let start = false;
 let done = false;
 img.onload = () => {
-<<<<<<< HEAD
-=======
     console.log("loaded")
     backgroundCtx.canvas.width  = img.width;
     backgroundCtx.canvas.height = img.height;   
->>>>>>> f1dc5f4d4b747c66d8698b02c2242d67aba0d1f6
     backgroundCtx.drawImage(img, 0, 0);
 
     backgroundCanvas.addEventListener('click', function (e) {

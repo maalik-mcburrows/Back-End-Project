@@ -23,12 +23,8 @@ router.get('/:id?', async (req, res) => {
     const {
         id
     } = req.params;
-<<<<<<< HEAD
-    const mountainData = await mountainModel.getById(id);
-=======
     const mountainName = await mountainModel.getMountainName(id);
     const mountainData = await mountainModel.getMountainById(id);
->>>>>>> f1dc5f4d4b747c66d8698b02c2242d67aba0d1f6
     const getReviewDetails = await mountainModel.getReviewDetails(id);
     // const getKarma = await mountainModel.getKarma(id);
     res.render('template', { 
