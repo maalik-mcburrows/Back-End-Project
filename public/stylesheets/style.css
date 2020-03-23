@@ -88,7 +88,7 @@ h1 {
   justify-content: center;
   display: flex;
   position: relative;
-  left: 140px;
+  left: 105px;
   top: 90px;
   z-index: 5;
   padding-bottom: 0;
@@ -106,7 +106,7 @@ form {
   display: inline-block;
   position: relative;
   top: 130px;
-  left: 90px;
+  left: 15px;
 
 }
 
@@ -115,7 +115,7 @@ form {
   display: inline-block;
   position: relative;
   top: 130px;
-  left: 55px;
+  
 
 }
 
@@ -130,7 +130,7 @@ form {
 
 .passwordInputLogin {
 
-  margin-left: 40px;
+  margin-left: 71px;
   border-color: black;
   border-width: 3px;
   border-radius: 10px;
@@ -142,7 +142,7 @@ form {
   display: inline-block;
   position: relative;
   top: 220px;
-  right: 310px;
+  right: 240px;
   border-color: black;
   border-width: 3px;
   border-radius: 10px;
@@ -157,6 +157,7 @@ label {
   justify-content: flex-end;
   text-align: right;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
 
 }
 
@@ -186,7 +187,7 @@ input {
 
 .emailInput {
 
-  margin-left: 102px;
+  margin-left: 64px;
   border-color: black;
   border-width: 3px;
   border-radius: 10px;
@@ -195,7 +196,7 @@ input {
 
 .passwordInput {
 
-  margin-left: 40px;
+  margin-left: 28px;
   border-color: black;
   border-width: 3px;
   border-radius: 10px;
@@ -205,8 +206,8 @@ input {
 
   display: inline-block;
   position: relative;
-  top: 185px;
-  right: 310px;
+  top: 220px;
+  right: 228px;
   border-color: black;
   border-width: 3px;
   border-radius: 10px;
