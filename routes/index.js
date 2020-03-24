@@ -6,18 +6,7 @@ const express = require('express'),
 /* GET home page. */
 router.get('/', async (req, res, next) => {
   const data = await MountainModel.getAllMountains();
-
-  res.render('template', { 
-    locals: {
-      title: 'Solo Dolo',
-      data: data,
-      is_logged_in: req.session.is_logged_in,
-      first_name: req.session.first_name
-    },
-    partials: {
-      partial: 'partial-index'
-    }
-  });
+  res.json(data);
 });
 
 router.post('/', async function (req, res) {

@@ -6,42 +6,18 @@ const mountainModel = require('../models/mountains');
 router.get('/', async (req, res, next) => {
     const data = await mountainModel.getAllMountains();
   
-    res.render('template', { 
-      locals: {
-        title: 'Mountain Archive',
-        data: data,
-        is_logged_in: req.session.is_logged_in,
-        first_name: req.session.first_name
-      },
-      partials: {
-        partial: 'partial-mtn-list'
-      }
-    });
+    res.json(data);
   });
 
 router.get('/:id?', async (req, res) => {
     const {
         id
     } = req.params;
-    const mountainName = await mountainModel.getMountainName(id);
+    // const mountainName = await mountainModel.getMountainName(id);
     const mountainData = await mountainModel.getMountainById(id);
-    const getReviewDetails = await mountainModel.getReviewDetails(id);
+    // const getReviewDetails = await mountainModel.getReviewDetails(id);
     // const getKarma = await mountainModel.getKarma(id);
-    res.render('template', { 
-        locals: {
-            mountainData: mountainData,
-            title: mountainData[0].name,
-            getReviewDetails: getReviewDetails,
-            // getKarma: getKarma,
-            is_logged_in: req.session.is_logged_in,
-            user_id: req.session.is_logged_in,
-            user_id: req.session.user_id,
-            first_name: req.session.first_name
-        },
-        partials: {
-            partial: 'partial-single'
-        }
-    })
+    res.json(mountainData);
 });
 
 router.get('/:id/review/:id?', async (req, res) => {
