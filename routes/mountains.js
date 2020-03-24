@@ -6,7 +6,17 @@ const mountainModel = require('../models/mountains');
 router.get('/', async (req, res, next) => {
     const data = await mountainModel.getAllMountains();
   
-    res.json(data);
+    res.render('template', { 
+      locals: {
+        title: 'Mountain Archive',
+        data: data,
+        is_logged_in: req.session.is_logged_in,
+        first_name: req.session.first_name
+      },
+      partials: {
+        partial: 'partial-mtn-list'
+      }
+    });
   });
 
 router.get('/:id?', async (req, res) => {
